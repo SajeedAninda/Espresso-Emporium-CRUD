@@ -8,7 +8,7 @@ const CoffeeDetails = () => {
     return (
         <div>
             <div>
-                <div className='addCoffeeBg h-screen'>
+                <div className='addCoffeeBg h-fit'>
                     <Link to={"/"}>
                         <div className='flex items-center gap-2 my-6 justify-center'>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -21,7 +21,7 @@ const CoffeeDetails = () => {
                         <div className='text-center space-y-3'>
                             <h1 className='text-[#331A15] text-4xl' style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.9)' }}>{name}</h1>
                         </div>
-                        <div className='flex items-center justify-center'>
+                        <div className='flex  flex-col md:flex-row items-center justify-center'>
                             <div className='flex-1 flex justify-center'>
                                 <img src={imgUrl} alt="" />
                             </div>

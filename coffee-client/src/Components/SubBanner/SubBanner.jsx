@@ -6,8 +6,8 @@ import four from "../../assets/icons/4.png";
 
 const SubBanner = () => {
     return (
-        <div className='bg-[#ECEAE3] h-[30vh] '>
-            <div className='grid grid-cols-4 gap-6 w-[85%] mx-auto py-6'>
+        <div className='bg-[#ECEAE3] h-fit'>
+            <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 w-[85%] mx-auto py-6'>
                 <div>
                     <img className='w-[60px]' src={one} alt="" />
                     <h3 className='text-[#331A15] text-2xl'>Awesome Aroma</h3>
