@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CoffeeCard from './CoffeeCard';
 
 const Products = () => {
     return (
@@ -17,6 +18,7 @@ const Products = () => {
                         </svg>
                     </button>
                 </Link>
+                <CoffeeCard></CoffeeCard>
             </div>
         </div>
     );

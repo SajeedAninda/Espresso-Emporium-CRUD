@@ -1,17 +1,47 @@
 import React from 'react';
 import "./addcoffee.css"
 import { Link } from 'react-router-dom';
+
 const AddCoffee = () => {
+
+    let handleAdd = (e) => {
+        e.preventDefault();
+        let name = e.target.name.value;
+        let chef = e.target.chef.value;
+        let price = e.target.price.value;
+        let taste = e.target.taste.value;
+        let category = e.target.category.value;
+        let details = e.target.details.value;
+        let imgUrl = e.target.imgUrl.value;
+        let coffeeDetails = { name, chef, price, taste, category, details, imgUrl };
+        console.log(coffeeDetails);
+
+        fetch('http://localhost:5000/coffees', {
+            method: 'POST',
+            body: JSON.stringify(coffeeDetails),
+            headers: {
+                'Content-type': 'application/json',
+            },
+        })
+            .then((response) => response.json())
+            .then((json) => {
+                if (json.insertedId) {
+                    alert("Coffee Added Succesfully");
+                }
+            });
+    }
+
+
     return (
         <div className='addCoffeeBg h-screen'>
             <Link to={"/"}>
-                    <div className='flex items-center gap-2 my-6 justify-center'>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M19.5 12H4.5M4.5 12L11.25 18.75M4.5 12L11.25 5.25" stroke="#331A15" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        <h1 className='text-[#331A15] text-2xl' style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.9)' }}>Back to Home</h1>
-                    </div>
-                </Link>
+                <div className='flex items-center gap-2 my-6 justify-center'>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M19.5 12H4.5M4.5 12L11.25 18.75M4.5 12L11.25 5.25" stroke="#331A15" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <h1 className='text-[#331A15] text-2xl' style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.9)' }}>Back to Home</h1>
+                </div>
+            </Link>
             <div className='w-[85%] mx-auto bg-[#F4F3F0] py-8'>
                 <div className='text-center space-y-3'>
                     <h1 className='text-[#331A15] text-4xl' style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.9)' }}>Add New Coffee</h1>
@@ -21,7 +51,7 @@ const AddCoffee = () => {
                 </div>
 
 
-                <form>
+                <form onSubmit={handleAdd}>
                     <div className=' px-16'>
                         <div className='w-full flex gap-6 justify-between my-4'>
                             <div className='flex-1'>
@@ -38,8 +68,8 @@ const AddCoffee = () => {
 
                         <div className='w-full flex gap-6 justify-between my-4'>
                             <div className='flex-1'>
-                                <label className='text-left text-2xl' htmlFor="Supplier">Supplier</label> <br />
-                                <input className='w-full p-2 rounded-md' type="text" placeholder='Enter Supplier Name' name='supplier' />
+                                <label className='text-left text-2xl' htmlFor="price">price</label> <br />
+                                <input className='w-full p-2 rounded-md' type="text" placeholder='Enter Price' name='price' />
                             </div>
                             <div className='flex-1'>
                                 <label className='text-left text-2xl' htmlFor="Taste">Taste</label> <br />
@@ -63,7 +93,7 @@ const AddCoffee = () => {
                         <div className='w-full flex gap-6 justify-between my-4'>
                             <div className='flex-1'>
                                 <label className='text-left text-2xl' htmlFor="Photo">Photo</label> <br />
-                                <input className='w-full p-2 rounded-md' type="text" placeholder='Enter Photo URL' name='photo' />
+                                <input className='w-full p-2 rounded-md' type="text" placeholder='Enter Photo URL' name='imgUrl' />
                             </div>
                         </div>
 

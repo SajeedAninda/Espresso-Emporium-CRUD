@@ -5,6 +5,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Homepage from './Components/Homepage.jsx';
 import AddCoffee from './Components/Products/AddCoffee.jsx';
+import CoffeeCard from './Components/Products/CoffeeCard.jsx';
 
 const router = createBrowserRouter([
   {
