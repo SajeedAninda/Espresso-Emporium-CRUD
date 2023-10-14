@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import "./addcoffee.css"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const AddCoffee = () => {
+    let navigate = useNavigate();
 
     let handleAdd = (e) => {
         e.preventDefault();
@@ -14,7 +16,6 @@ const AddCoffee = () => {
         let details = e.target.details.value;
         let imgUrl = e.target.imgUrl.value;
         let coffeeDetails = { name, chef, price, taste, category, details, imgUrl };
-        console.log(coffeeDetails);
 
         fetch('http://localhost:5000/coffees', {
             method: 'POST',
@@ -26,7 +27,12 @@ const AddCoffee = () => {
             .then((response) => response.json())
             .then((json) => {
                 if (json.insertedId) {
-                    alert("Coffee Added Succesfully");
+                    Swal.fire(
+                        'Good job!',
+                        'Coffee Added Successfully',
+                        'success'
+                    );
+                    navigate("/");
                 }
             });
     }
@@ -68,7 +74,7 @@ const AddCoffee = () => {
 
                         <div className='w-full flex gap-6 justify-between my-4'>
                             <div className='flex-1'>
-                                <label className='text-left text-2xl' htmlFor="price">price</label> <br />
+                                <label className='text-left text-2xl' htmlFor="price">Price</label> <br />
                                 <input className='w-full p-2 rounded-md' type="text" placeholder='Enter Price' name='price' />
                             </div>
                             <div className='flex-1'>

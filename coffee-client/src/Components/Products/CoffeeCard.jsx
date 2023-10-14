@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
 import SingleCard from './SingleCard';
 
 const CoffeeCard = () => {
@@ -12,9 +11,14 @@ const CoffeeCard = () => {
 
     return (
         <div className='grid grid-cols-2 gap-6'>
-            {
-                coffeeData.map(coffee => <SingleCard key={coffee._id} coffee={coffee}></SingleCard>)
-            }
+            {coffeeData.map(coffee => (
+                <SingleCard
+                    key={coffee._id}
+                    coffee={coffee}
+                    coffeeData={coffeeData} 
+                    setCoffeeData={setCoffeeData} 
+                />
+            ))}
         </div>
     );
 };
