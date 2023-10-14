@@ -1,4 +1,4 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 let express = require("express");
 let app = express();
 let cors = require("cors");
@@ -30,6 +30,12 @@ async function run() {
 
         app.get("/coffees", async (req, res) => {
             let result = await coffeeCollection.find().toArray();
+            res.send(result);
+        })
+        app.delete("/coffees/:id", async (req, res) => {
+            let id = req.params.id;
+            const query = { _id: new ObjectId(id) };
+            const result = await coffeeCollection.deleteOne(query);
             res.send(result);
         })
 
