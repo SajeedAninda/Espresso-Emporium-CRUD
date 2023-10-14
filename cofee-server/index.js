@@ -32,13 +32,38 @@ async function run() {
             let result = await coffeeCollection.find().toArray();
             res.send(result);
         })
+        app.get("/coffees/:id", async (req, res) => {
+            let id = req.params.id;
+            const query = { _id: new ObjectId(id) };
+            let result = await coffeeCollection.findOne();
+            res.send(result);
+        })
         app.delete("/coffees/:id", async (req, res) => {
             let id = req.params.id;
             const query = { _id: new ObjectId(id) };
             const result = await coffeeCollection.deleteOne(query);
             res.send(result);
-        })
+        });
+        app.put("/coffees/:id", async (req, res) => {
+            let id = req.params.id;
+            let coffeeData = req.body;
+            const filter = { _id: new ObjectId(id) };
+            const options = { upsert: true };
+            const updateCoffee = {
+                $set: {
+                    name: coffeeData.name,
+                    chef: coffeeData.chef,
+                    price: coffeeData.price,
+                    taste: coffeeData.taste,
+                    category: coffeeData.category,
+                    details: coffeeData.details,
+                    imgUrl: coffeeData.imgUrl,
 
+                },
+            }
+            const result = await coffeeCollection.updateOne(filter, updateCoffee, options);
+            res.send(result);
+        });
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
