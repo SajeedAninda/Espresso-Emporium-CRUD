@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 
 const UpdateCoffee = () => {
     let coffeeData = useLoaderData();
+    console.log(coffeeData);
     let { _id, name, chef, price, taste, category, details, imgUrl } = coffeeData;
     let navigate = useNavigate();
 

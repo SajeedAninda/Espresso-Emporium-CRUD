@@ -5,8 +5,8 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Homepage from './Components/Homepage.jsx';
 import AddCoffee from './Components/Products/AddCoffee.jsx';
-import CoffeeCard from './Components/Products/CoffeeCard.jsx';
 import UpdateCoffee from './Components/Products/UpdateCoffee.jsx';
+import CoffeeDetails from './Components/Products/CoffeeDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +25,11 @@ const router = createBrowserRouter([
         path: "/updateCoffee/:id",
         loader: ({ params }) => fetch(`http://localhost:5000/coffees/${params.id}`),
         element: <UpdateCoffee></UpdateCoffee>,
+      },
+      {
+        path: "/coffeeDetails/:id",
+        loader: ({ params }) => fetch(`http://localhost:5000/coffees/${params.id}`),
+        element: <CoffeeDetails></CoffeeDetails>,
       },
     ],
   },
