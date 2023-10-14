@@ -35,7 +35,7 @@ async function run() {
         app.get("/coffees/:id", async (req, res) => {
             let id = req.params.id;
             const query = { _id: new ObjectId(id) };
-            let result = await coffeeCollection.findOne();
+            let result = await coffeeCollection.findOne(query);
             res.send(result);
         })
         app.delete("/coffees/:id", async (req, res) => {
