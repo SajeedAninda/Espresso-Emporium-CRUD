@@ -62,11 +62,11 @@ const AddCoffee = () => {
                         <div className='w-full flex gap-6 justify-between my-4'>
                             <div className='flex-1'>
                                 <label className='text-left text-2xl' htmlFor="name">Name</label> <br />
-                                <input className='w-full p-2 rounded-md' type="text" placeholder='Enter Coffee Name' name='name' />
+                                <input className='w-full p-2 rounded-md' required type="text" placeholder='Enter Coffee Name' name='name' />
                             </div>
                             <div className='flex-1'>
                                 <label className='text-left text-2xl' htmlFor="name">Chef</label> <br />
-                                <input className='w-full p-2 rounded-md' type="text" placeholder='Enter Chef Name' name='chef' />
+                                <input className='w-full p-2 rounded-md' required type="text" placeholder='Enter Chef Name' name='chef' />
                             </div>
                         </div>
 
@@ -75,11 +75,11 @@ const AddCoffee = () => {
                         <div className='w-full flex gap-6 justify-between my-4'>
                             <div className='flex-1'>
                                 <label className='text-left text-2xl' htmlFor="price">Price</label> <br />
-                                <input className='w-full p-2 rounded-md' type="text" placeholder='Enter Price' name='price' />
+                                <input className='w-full p-2 rounded-md' required type="text" placeholder='Enter Price' name='price' />
                             </div>
                             <div className='flex-1'>
                                 <label className='text-left text-2xl' htmlFor="Taste">Taste</label> <br />
-                                <input className='w-full p-2 rounded-md' type="text" placeholder='Enter Taste' name='taste' />
+                                <input className='w-full p-2 rounded-md' required type="text" placeholder='Enter Taste' name='taste' />
                             </div>
                         </div>
 
@@ -87,11 +87,11 @@ const AddCoffee = () => {
                         <div className='w-full flex gap-6 justify-between my-4'>
                             <div className='flex-1'>
                                 <label className='text-left text-2xl' htmlFor="Category">Category</label> <br />
-                                <input className='w-full p-2 rounded-md' type="text" placeholder='Enter Category Name' name='category' />
+                                <input className='w-full p-2 rounded-md'required type="text" placeholder='Enter Category Name' name='category' />
                             </div>
                             <div className='flex-1'>
                                 <label className='text-left text-2xl' htmlFor="Details">Details</label> <br />
-                                <input className='w-full p-2 rounded-md' type="text" placeholder='Enter Coffee Details' name='details' />
+                                <input className='w-full p-2 rounded-md' required type="text" placeholder='Enter Coffee Details' name='details' />
                             </div>
                         </div>
 
@@ -99,7 +99,7 @@ const AddCoffee = () => {
                         <div className='w-full flex gap-6 justify-between my-4'>
                             <div className='flex-1'>
                                 <label className='text-left text-2xl' htmlFor="Photo">Photo</label> <br />
-                                <input className='w-full p-2 rounded-md' type="text" placeholder='Enter Photo URL' name='imgUrl' />
+                                <input className='w-full p-2 rounded-md' required type="text" placeholder='Enter Photo URL' name='imgUrl' />
                             </div>
                         </div>
 
