@@ -4,7 +4,7 @@ import SingleCard from './SingleCard';
 const CoffeeCard = () => {
     let [coffeeData, setCoffeeData] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/coffees")
+        fetch("https://cofee-server.vercel.app/coffees")
             .then(res => res.json())
             .then(data => setCoffeeData(data));
     }, []);

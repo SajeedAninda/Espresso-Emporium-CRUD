@@ -17,7 +17,7 @@ const AddCoffee = () => {
         let imgUrl = e.target.imgUrl.value;
         let coffeeDetails = { name, chef, price, taste, category, details, imgUrl };
 
-        fetch('http://localhost:5000/coffees', {
+        fetch('https://cofee-server.vercel.app/coffees', {
             method: 'POST',
             body: JSON.stringify(coffeeDetails),
             headers: {
