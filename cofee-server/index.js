@@ -4,7 +4,15 @@ let app = express();
 let cors = require("cors");
 let port = process.env.PORT || 5000;
 // MIDDLEWARE
-app.use(cors());
+const corsConfig = {
+    origin: '',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+}
+app.use(cors(corsConfig))
+app.options("", cors(corsConfig))
+
+
 app.use(express.json());
 // MONGOCLIENT 
 const uri = "mongodb+srv://sajaninda:OHJawuylsfxy94rV@cluster0.ruhvmdy.mongodb.net/?retryWrites=true&w=majority";
@@ -20,6 +28,9 @@ async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
         // await client.connect();
+        // Send a ping to confirm a successful connection
+        // await client.db("admin").command({ ping: 1 });
+
         const coffeeCollection = client.db("coffeesDB").collection("coffees");
 
         app.post("/coffees", async (req, res) => {
@@ -64,8 +75,6 @@ async function run() {
             const result = await coffeeCollection.updateOne(filter, updateCoffee, options);
             res.send(result);
         });
-        // Send a ping to confirm a successful connection
-        // await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
         // Ensures that the client will close when you finish/error
